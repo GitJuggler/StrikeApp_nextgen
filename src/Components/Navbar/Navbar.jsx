@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Typography } from "@mui/material";
+import { Avatar, Box, Button, Chip, Typography } from "@mui/material";
 import React from "react";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -20,15 +20,18 @@ export const Navbar = () => {
   return (
     <Box sx={{width: "100%", height: "100px", display: "flex", alignItems: "center", justifyContent: "center", position: "relative",}}>
         <Box sx={{width: '50%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '50px'}}>
-            <Link to='/'>
+            <Link to='/' sx={{display: 'flex'}}>
                 <Typography variant="h3" sx={{fontSize: '20px', cursor: 'pointer', fontWeight: '600', color: 'blue'}}>Striker application</Typography>
             </Link>
+            <Chip label="Nextgen" sx={{color: 'blue', border: '1px solid blue', ml: '20px'}} variant="outlined" />
         </Box>
         <Box sx={{width: '50%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '50px', gap: '20px'}}>
             <Button variant="outlined">
                 <Link to='/login' >Login</Link>
             </Button>
-            <Button variant="contained" href="#">Register</Button>
+            <Button variant="contained">
+                <Link to='/register'>Register</Link>
+            </Button>
             <Box sx={{width: '50%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 <Button id="basic-button" aria-controls={open ? 'basic-menu' : undefined} aria-haspopup="true" aria-expanded={open ? 'true' : undefined}onClick={handleClick}>
                     <Avatar></Avatar>
