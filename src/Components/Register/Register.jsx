@@ -11,6 +11,7 @@ export default function Register() {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [group, setGroup] = useState('');
 
 	// States for checking the errors
 	const [submitted, setSubmitted] = useState(false);
@@ -33,11 +34,16 @@ export default function Register() {
 		setPassword(e.target.value);
 		setSubmitted(false);
 	};
+	// Handling the Group change
+	const handleGroup = (e) => {
+		setGroup(e.target.value);
+		setSubmitted(false);
+	};
 
 	// Handling the form submission
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (name === '' || email === '' || password === '') {
+		if (name === '' || email === '' || password === '' || group === '') {
 			setError(true);
 		} else {
 			setSubmitted(true);
@@ -46,7 +52,9 @@ export default function Register() {
 			axios.post("http://localhost:3001/users", {
 				user_name: `${name}`,
 				email: `${email}`,
-				password: `${password}`
+				password: `${password}`,
+				strikes: 0,
+				group: `${group}`
 			})
 		}
 
@@ -94,6 +102,7 @@ export default function Register() {
 				<TextField onChange={handleName} label='User name'  value={name} type="text" name='user_name' fullWidth/>
 				<TextField onChange={handleEmail} label='Email'value={email} type="email" name='email' fullWidth />
 				<TextField onChange={handlePassword} label='Password' value={password} type="password" name='password' fullWidth />
+				<TextField onChange={handleGroup} label='Group' value={group} type="password" name='password' fullWidth />
 				
 
 				<Stack direction={'row'} gap={'10px'}>
